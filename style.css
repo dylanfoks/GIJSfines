@@ -1,5 +1,5 @@
 body {
- margin: 0;
+ width: 90%;
 }
 
 h1, h2, h3 {
@@ -10,9 +10,14 @@ h1, h2, h3 {
     list-style: none;
     margin: 0;
     padding: 0;
+    height: auto;
 }
 
-
+#drink-list ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
 .fine-item {
     display: flex;
@@ -23,29 +28,45 @@ h1, h2, h3 {
     justify-content: center;
     flex-direction: row;
     padding: 16px;
-    max-width: 360px;
+    width: 100%;
     margin: 0 auto;
     background-color: lightgray;
-  }
-  
-  .item:nth-child(1) {
-    flex-grow: 1;
-    width: 10%;
-    font-weight: bold;
-  }
-  
-  .item:nth-child(2) {
-    flex-shrink: 0;
-    width: 30%;
-  }
-  
-  .item:nth-child(3) {
-    width: 40%;
-    height: auto;
+    margin-bottom: 8px;
   }
 
-  .item:nth-child(4) {
-    width: 10%;
-    height: auto;
-    font-weight: bold;
+  .drink-item {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
+    padding: 16px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: lightgray;
+    margin-bottom: 8px;
   }
+  
+        .item:nth-child(1) {
+            flex-grow: 1;
+            width: 10%;
+            font-weight: bold;
+        }
+        
+        .item:nth-child(2) {
+            flex-shrink: 0;
+            width: 30%;
+        }
+        
+        .item:nth-child(3) {
+            width: 40%;
+            height: auto;
+        }
+
+        .item:nth-child(4) {
+            width: 10%;
+            height: auto;
+            font-weight: bold;
+        }

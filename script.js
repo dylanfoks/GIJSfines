@@ -2,11 +2,20 @@
 const sheetId = "1pjwPWASARvu7zrg8W5RnCMpYXC_cOmpL9HNbveAfmWc";
 // sheetName is the name of the TAB in your spreadsheet
 const sheetName = encodeURIComponent("Finelist");
-const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
+const sheetName2 = encodeURIComponent("Drinklist");
 
+const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
+const sheetURL2 = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName2}`;
+
+// Fines tab
 fetch(sheetURL)
   .then((response) => response.text())
   .then((csvText) => handleResponse(csvText));
+
+// Drinks tab
+fetch(sheetURL2)
+  .then((response) => response.text())
+  .then((csvText) => handleResponse2(csvText));
 
 function handleResponse(csvText) {
   let sheetObjects = csvToObjects(csvText);
@@ -14,19 +23,13 @@ function handleResponse(csvText) {
   // console.log(sheetObjects);
   // ADD CODE HERE
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  // const fineList = document.getElementById('fine-list')
-  const descendDateBtn = document.getElementById('descend-date-btn')
-  const ulEl = document.getElementById('ul-el')
-
+  const ulEl = document.getElementById('ul-el-fines')
   let listItems = ""
 
   // Showing the list of fines
   function render(sheetObjects) {
-    // let listItems = ""
     for (let i = 0; i < sheetObjects.length; i++) {
-      if (sheetObjects[i].Payment === "FALSE") {
+      if (sheetObjects[i].PlayerID) {
         // console.log(sheetObjects[i])
         listItems += `
           <li>
@@ -34,7 +37,7 @@ function handleResponse(csvText) {
               <div class="item">${sheetObjects[i].PlayerID}</div>
               <div class="item">${sheetObjects[i].Fine}</div>
               <div class="item">${sheetObjects[i].Date}</div>
-              <div class="item">${sheetObjects[i].Amount}</div>
+              <div class="item">€ ${sheetObjects[i].Amount}</div>
             </div>
           </li>
         `
@@ -42,56 +45,39 @@ function handleResponse(csvText) {
       ulEl.innerHTML = listItems
     }
   }
-  
-  // function clearSheet() {
-  //   listItems = ""
-  // }
 
   render(sheetObjects)
+}
 
-  // descendDateBtn.addEventListener('click', function(){
-  //   // sheetObjects.reverse()
-  //   sheetObjects.sort((a, b) => a.Date - b.Date);
-  //   clearSheet()
-  //   render(sheetObjects)
-  //   // console.log(sheetObjects)
-  // })
+// DRINKS
+function handleResponse2(csvText) {
+  let sheetObjects2 = csvToObjects(csvText);
+  // sheetObjects is now an Array of Objects
+  // console.log(sheetObjects);
+  // ADD CODE HERE
 
-  // <div class="fine-item">
-  //             <div id="player-id" class="player-id">${sheetObjects[i].PlayerID}</div>
-  //             <div id="fine" class="fine">${sheetObjects[i].Fine}</div>
-  //             <div id="date" class="date">${sheetObjects[i].Date}</div>
-  //             <div id="amount" class="amount">${sheetObjects[i].Amount}</div>
-  //           </div>
+  const ulEl2 = document.getElementById('ul-el-drinks')
+  let listItems2 = ""
 
+  // Showing the list of drinks
+  function render(sheetObjects2) {
+    for (let i = 0; i < sheetObjects2.length; i++) {
+      if (sheetObjects2[i].Payment === "FALSE") {
+        // console.log(sheetObjects[i])
+        listItems2 += `
+          <li>
+            <div class="drink-item">
+              <div class="item">${sheetObjects2[i].PlayerID}</div>
+              <div class="item">€ ${sheetObjects2[i].Amount}</div>
+            </div>
+          </li>
+        `
+      }
+      ulEl2.innerHTML = listItems2
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Dont remove this string
+  render(sheetObjects2)
 }
 
 function csvToObjects(csv) {
