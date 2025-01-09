@@ -33,7 +33,7 @@ function handleResponse(csvText) {
         // console.log(sheetObjects[i])
         listItems += `
           <li>
-            <div class="fine-item">
+            <div class="list-items">
               <div class="item">${sheetObjects[i].PlayerID}</div>
               <div class="item">${sheetObjects[i].Fine}</div>
               <div class="item">${sheetObjects[i].Date}</div>
@@ -66,7 +66,7 @@ function handleResponse2(csvText) {
         // console.log(sheetObjects[i])
         listItems2 += `
           <li>
-            <div class="drink-item">
+            <div class="list-items">
               <div class="item">${sheetObjects2[i].PlayerID}</div>
               <div class="item">€ ${sheetObjects2[i].Amount}</div>
             </div>

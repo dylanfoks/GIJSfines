@@ -1,5 +1,7 @@
 body {
- width: 90%;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100dvw;
+    margin: 0;
 }
 
 h1, h2, h3 {
@@ -19,32 +21,17 @@ h1, h2, h3 {
     padding: 0;
 }
 
-.fine-item {
+.list-items {
     display: flex;
-    gap: 16px;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    align-items: start;
-    justify-content: center;
-    flex-direction: row;
-    padding: 16px;
-    width: 100%;
-    margin: 0 auto;
-    background-color: lightgray;
-    margin-bottom: 8px;
-  }
-
-  .drink-item {
-    display: flex;
-    gap: 16px;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    align-items: start;
-    justify-content: center;
-    flex-direction: row;
-    padding: 16px;
-    width: 100%;
-    margin: 0 auto;
+    /* gap: 8px; */
+    /* flex-wrap: nowrap; */
+    /* align-content: stretch; */
+    /* align-items: start; */
+    /* justify-content: center; */
+    /* flex-direction: row; */
+    padding: 4px;
+    /* width: 100%; */
+    /* margin: 0 auto; */
     background-color: lightgray;
     margin-bottom: 8px;
   }
@@ -57,7 +44,7 @@ h1, h2, h3 {
         
         .item:nth-child(2) {
             flex-shrink: 0;
-            width: 30%;
+            width: 40%;
         }
         
         .item:nth-child(3) {
