@@ -1,3 +1,4 @@
+## How to make the connection between Google Sheets and Javascript
 ## How to use
 
 in script.js, make sure to paste in the sheetID and sheetName corresponding to your google spreadsheet.
